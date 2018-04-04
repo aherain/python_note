@@ -28,4 +28,4 @@ if __name__ == "__main__":
     on.Show()
 
 
-# curl --location-trusted -utatooine2:tatooine2.Midas.W6.huayingjuhe.com -T add2014wan.csv "http://127.0.0.1:8030/api/Bestine/stt_boxoffice/_load?label=boxoffice_dump2014_2951&column_separator=,"
+# curl --location-trusted -utatooine2:tatooine2.Midas.W6.huayingjuhe.com -T 2016wan.csv "http://127.0.0.1:8030/api/Bestine/stt_boxoffice/_load?label=boxoffice_dump2016_39166&column_separator=,"
