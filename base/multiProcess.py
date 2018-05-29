@@ -19,7 +19,7 @@ def run_proc(name):
     print('Run child process %s (%s)...' % (name, os.getpid()))
 
 def long_time_task(name):
-    print('Run task %s (%s)',(name, os.getpid()))
+    print('Run task %s (%s)'%(name, os.getpid()))
     time.sleep(4)
 
 def write(q):
