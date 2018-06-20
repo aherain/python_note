@@ -8,7 +8,7 @@ print('a  b, c  '.split(' '))
 print(re.split(r'[\s\,\t]+','a  b, c  '.strip()))
 
 
-#re.match() 支持分株
+#re.match() 支持分组
 
 m = re.match(r'^(\d{3})-(\d{3,8})$', '010-12345')
 print(m.group(0),m.group(1),m.group(2))

@@ -1,10 +1,10 @@
 class BinaryTree:
-    def __init__(self,rootObj):
+    def __init__(self, rootObj):
         self.key = rootObj
         self.leftChild = None
         self.rightChild = None
 
-    def insertLeft(self,newNode):
+    def insertLeft(self, newNode):
         if self.leftChild == None:
             self.leftChild = BinaryTree(newNode)
         else:
