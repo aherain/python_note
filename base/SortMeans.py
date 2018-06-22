@@ -67,11 +67,7 @@ def shellSort(alist):
       for startposition in range(sublistcount):
           print('test', alist, startposition, sublistcount)
           gapInsertionSort(alist, startposition, sublistcount)
-
-
-
       print("After increments of size",sublistcount,"The list is",alist)
-
       sublistcount = sublistcount // 2
 
 def gapInsertionSort(alist,start,gap):
@@ -101,10 +97,7 @@ def mergeSort(alist):
 
         mergeSort(lefthalf)
         mergeSort(righthalf)
-
-        i=0
-        j=0
-        k=0
+        i, j, k = 0, 0, 0
         while i < len(lefthalf) and j < len(righthalf):
             if lefthalf[i] < righthalf[j]:
                 alist[k]=lefthalf[i]
@@ -135,7 +128,6 @@ def quickSort(alist):
 
 def quickSortHelper(alist,first,last):
    if first<last:
-
        splitpoint = partition(alist,first,last)
        quickSortHelper(alist,first,splitpoint-1)
        quickSortHelper(alist,splitpoint+1,last)
@@ -146,7 +138,6 @@ def partition(alist,first,last):
    pivotvalue = alist[first]
    leftmark = first+1
    rightmark = last
-
    done = False
    while not done:
 
@@ -166,7 +157,6 @@ def partition(alist,first,last):
    temp = alist[first]
    alist[first] = alist[rightmark]
    alist[rightmark] = temp
-
    return rightmark
 
 alist = [54,26,93,17,77,31,44,55,20]

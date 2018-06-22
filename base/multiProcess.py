@@ -1,4 +1,4 @@
-from multiprocessing import Process, Queue
+from multiprocessing import Process, Queue, Pipe
 from multiprocessing import Pool
 
 
@@ -36,33 +36,51 @@ def read(q):
         v = q.get(True)
         print("GET %s from Write Queue"% v)
 
+#管道通信
+
+def f(conn):
+    conn.send([42, None, 'hello'])
+    while True:
+        print('子工道',conn.recv())
+
+
 if __name__=='__main__':
-    print('Parent process %s.' % os.getpid())
-    p = Process(target=run_proc, args=('test',))
-    print('Child process will start.')
-    p.start()
-    p.join()
-    print('Child process end.')
+    # print('Parent process %s.' % os.getpid())
+    # p = Process(target=run_proc, args=('test',))
+    # print('Child process will start.')
+    # p.start()
+    # p.join()
+    # print('Child process end.')
+    #
+    # #用线程池的方式批量创建多个子进程
+    # p = Pool(4)
+    # for i in range(5):
+    #     p.apply_async(long_time_task, args=(i,)) #设置每一个进程执行的函数和参数
+    #
+    # print('waiting for all subprocess done...')
+    # p.close()
+    # p.join()
+    # print("all subprocess done")
+    #
+    # # python进程通信，提供了 队列（Queue）,通道（Pipes）等多种方式
+    # q = Queue()
+    # pw = Process(target=write, args=(q,))
+    # pr = Process(target=read, args=(q,))
+    # pw.start()
+    # pr.start()
+    #
+    # pw.join()
+    # pr.terminate() #强行终止死循环程序
 
-    #用线程池的方式批量创建多个子进程
-    p = Pool(4)
-    for i in range(5):
-        p.apply_async(long_time_task, args=(i,)) #设置每一个进程执行的函数和参数
+    #通过管道实现进程之间的通信
+    parent_conn, child_conn = Pipe()
+    pp = Process(target=f, args=(child_conn,))
+    pp.start()
 
-    print('waiting for all subprocess done...')
-    p.close()
-    p.join()
-    print("all subprocess done")
+    print('双工道', parent_conn.recv())
+    parent_conn.send('6666')
 
-    # python进程通信，提供了 队列（Queue）,通道（Pipes）等多种方式
-    q = Queue()
-    pw = Process(target=write, args=(q,))
-    pr = Process(target=read, args=(q,))
-    pw.start()
-    pr.start()
 
-    pw.join()
-    pr.terminate() #强行终止死循环程序
 
 
 
