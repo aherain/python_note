@@ -34,7 +34,7 @@ def insertSort(ls):
     for i in range(1,len(ls)):
         pos = i
         val = ls[i]
-        while pos>0 and ls[pos-1]>val:
+        while pos > 0 and ls[pos-1]>val:
             ls[pos] = ls[pos-1]
             pos = pos-1
         ls[pos] = val
@@ -42,9 +42,9 @@ def insertSort(ls):
 # insertSort(alist)
 # print('插入排序的结果:', alist)
 
+#希尔排序就是分 gap 的插入排序
 def shellSort(ls):
     n = len(ls)
-
     gap = n//2
     while gap > 0:
         #gap =1 就是普通的插入排序
@@ -56,11 +56,54 @@ def shellSort(ls):
                 j = j-gap
             ls[j] = temp
         #普通的插入排序
-
         gap = gap //2
 
 # shellSort(alist)
 # print('希尔排序的结果', alist)
+
+def shell1(ls):
+    n = len(ls)
+    gap = n // 2
+    while gap > 0:
+
+        for i in range(gap, n):
+            temp = ls[i]
+            j = i
+            while j>=gap and ls[j-gap]> temp:
+                ls[j] = ls[j-gap]
+                j = j - gap
+            ls[j] = temp
+        gap = gap // 2
+
+
+def shell2(ls):
+    n = len(ls)
+    gap = n // 2
+    while gap > 0:
+        for i in range(gap, n):
+            temp = ls[i]
+            j = i
+            while j >= gap and ls[j-gap] > temp:
+                ls[i] = ls[j-gap]
+                j = j - gap
+            ls[j] = temp
+        gap = gap // 2
+
+def shell3(ls):
+    n = len(ls)
+    gap = n // 2
+    while gap >0:
+        for i in range(gap, n):
+            temp = ls[i]
+            j = i
+            while j > gap and ls[j-gap] > temp:
+                ls[i] = ls[j-gap]
+                j = j - gap
+            ls[j] = temp
+        gap = gap // 2
+
+
+
 
 from collections import deque
 def merge_sort(lst):
@@ -78,6 +121,21 @@ def merge_sort(lst):
     left = merge_sort(lst[:middle])
     right = merge_sort(lst[middle:])
     return merge(left, right)
+
+def ms(ls):
+    if len(ls)<=1:
+        return ls
+    def m(left, right):
+        md, left, right = deque(), deque(left), deque(right)
+        while left and right:
+            md.append(left.popleft() if left[0] < right[0] else right.popleft())
+
+        md.extend(right if right else left)
+        return md
+    middle = int(len(ls) // 2)
+    left = ms(ls[:middle])
+    right = ms(ls[middle:])
+    return m(left, right)
 
 # merge_sort(alist)
 # print("归并排序的结果", merge_sort(alist))
@@ -102,3 +160,40 @@ def partition(lst, lo, hi):
     return i+1
 quicksort(alist, 0, len(alist))
 print('快速排序的结果', alist)
+
+
+def qs1(lst, lo, hi):
+    if lo < hi:
+        p = pr1(lst, lo, hi)
+        qs1(lst, lo, p)
+        qs1(lst, p+1, hi)
+    return
+
+def pr1(lst, lo, hi):
+    pivot = lst[hi-1]
+    i = lo - 1
+
+    for j in range(lo, hi):
+        if lst[j] < pivot:
+            i = i + 1
+            lst[i], lst[j] = lst[j], lst[i]
+
+    if lst[hi-1] < lst[i+1]:
+        lst[i+1], lst[hi-1] = lst[hi-1], lst[i+1]
+
+    return i+1
+
+
+def pr2(lst, lo, hi):
+    pivot = lst[hi-1]
+    i = lo - 1
+
+    for j in range(lo, hi):
+        if lst[j] < pivot:
+            i = i + 1
+            lst[i], lst[j] = lst[j], lst[i]
+
+    if lst[hi-1] < lst[i+1]:
+        lst[i+1], lst[hi-1] = lst[hi-1], lst[i+1]
+
+    return i+1
