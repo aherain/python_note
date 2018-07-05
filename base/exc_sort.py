@@ -1,5 +1,5 @@
 
-alist = [23,54,6,787,88,1,-1]
+alist = [23,54,6,787,88,1,-1, 29]
 
 def bubbleSort(ls):
     exchanges = True
@@ -159,41 +159,83 @@ def partition(lst, lo, hi):
         lst[i+1], lst[hi-1] = lst[hi-1], lst[i+1]
     return i+1
 quicksort(alist, 0, len(alist))
-print('快速排序的结果', alist)
 
 
-def qs1(lst, lo, hi):
-    if lo < hi:
-        p = pr1(lst, lo, hi)
-        qs1(lst, lo, p)
-        qs1(lst, p+1, hi)
-    return
 
-def pr1(lst, lo, hi):
-    pivot = lst[hi-1]
-    i = lo - 1
+#Talj is cheap, show the code
+def quicksort(nums):
+    if len(nums) <= 1:
+        return nums
+    #左子数组
+    less = []
+    #右子数组
+    greater = []
+    base = nums.pop()
+    for x in nums:
+        if x < base:
+            less.append(x)
+        else:
+            greater.append(x)
 
-    for j in range(lo, hi):
-        if lst[j] < pivot:
-            i = i + 1
-            lst[i], lst[j] = lst[j], lst[i]
+    return quicksort(less) + [base] + quicksort(greater)
 
-    if lst[hi-1] < lst[i+1]:
-        lst[i+1], lst[hi-1] = lst[hi-1], lst[i+1]
-
-    return i+1
+nums = [6,1,2,7,9,3,4,5,10,8]
+print('打印快速排序的结果：', quicksort(nums))
 
 
-def pr2(lst, lo, hi):
-    pivot = lst[hi-1]
-    i = lo - 1
+# coding:utf-8
+# 找零钱问题算法实现：基本版性能分析
 
-    for j in range(lo, hi):
-        if lst[j] < pivot:
-            i = i + 1
-            lst[i], lst[j] = lst[j], lst[i]
+# 统计递归次数
+recursion_num = 0
 
-    if lst[hi-1] < lst[i+1]:
-        lst[i+1], lst[hi-1] = lst[hi-1], lst[i+1]
+# 4种硬币面值
+values = [1,5,10,25]
 
-    return i+1
+# 缓存数组，为一个一维数组，用于缓存每次递归函数求得的值
+# cache[i]表示凑够i美分所需的最少硬币个数，cache的元素都被初始化为-1，表示个数未知
+cache = []
+
+# 初始化缓存数组
+def init(amount):
+    global cache
+    cache = [-1] * (amount + 1)
+
+# 凑够amount这么多钱数需要的最少硬币个数
+def minCoins(amount):
+    global recursion_num
+    global cache
+
+    # 需要的最少硬币个数
+    ret_min = amount
+
+    # 如果缓存数组中有对应的值，那么直接从中取，不再重复计算了
+    if cache[amount] != -1:
+        ret_min = cache[amount]
+    elif amount < 1:
+        ret_min = 0
+    # 如果要找的钱数恰好是某种硬币的面值，那么最少只需一个硬币
+    elif amount in values:
+        ret_min = 1
+    else:
+        # 遍历面值数组中面值小于等于amount的那些元素
+        for v in [x for x in values if x <= amount]:
+            # 用面值为v的硬币+其他硬币找零所需的最少硬币数
+            min_num = 1 + minCoins(amount - v)
+            # 判断min_num和ret_min的大小，更新ret_min
+            if min_num < ret_min:
+                ret_min = min_num
+
+    # 更新缓存数组
+    cache[amount] = ret_min
+
+    recursion_num += 1
+    return ret_min
+
+def main():
+    init(63)
+    print(minCoins(63))
+    print(cache)
+    print(recursion_num)
+
+main()

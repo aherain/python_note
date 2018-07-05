@@ -191,7 +191,6 @@ def f(x):
    return x + x * x
 logged(f)
 
-
 #wraps 复制函数的装饰信息【函数名，doc 信息】
 from functools import wraps
 def logged(func):
