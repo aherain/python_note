@@ -1,0 +1,60 @@
+select
+	key_word as 关键词,
+	split(aa1, ',') [0] as 一级类目,
+	sum(bb) as 搜索量
+from
+	(
+		select
+			dt,
+			bs,
+			concat(dim_item_gen_first_cate_name, ',', key_word) aa1,
+			key_word,
+			search_times bb,
+			click_num_sku cc,
+			par_ord_num_cate dd
+		from
+			(
+				select
+					dt,
+					bs,
+					key_word,
+					cid3,
+					search_times,
+					click_num_sku,
+					par_ord_num_cate
+				from
+					app.v_adm_m14_key_word_sum_d LATERAL VIEW explode(split(high_value, ',')) adTable as cid3
+				where
+					dt >= '2018-07-01' and dt <= '2018-07-31'
+			)
+			a
+		inner join
+			(
+				select
+					dim_item_gen_first_cate_name,
+					dim_item_gen_second_cate_name,
+					item_gen_third_cate_id
+				from
+					dim.dim_item_gen_third_cate
+				where
+					item_gen_first_cate_id in('12218', '1320', '12259', '6233', '12473', '6994', '15901', '16750')
+					or item_gen_second_cate_id in('6313', '1524', '1528', '12193', '1526', '4997', '1527', '1525', '4979', '1523', '1381', '1387', '16831', '16832')
+			)
+			b
+		on
+			a.cid3 = b.item_gen_third_cate_id
+		where
+			a.cid3 is not null
+		group by
+			key_word,
+			dt,
+			concat(dim_item_gen_first_cate_name, ',', key_word),
+			search_times,
+			click_num_sku,
+			bs,
+			par_ord_num_cate
+	)
+	t1
+group by
+	key_word,
+	split(aa1, ',') [0] order by 搜索量 desc limit 10000
