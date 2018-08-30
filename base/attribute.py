@@ -74,8 +74,6 @@ repeat(*args)
 print("Call function repeat using a dictionary of keyword arguments:")
 args2 = {'count': 4, 'name': 'cats'}
 repeat(**args2)
-
-
 # def cache(function):
 #     cached_values = {}
 #     def wrapping_function(*args):
@@ -93,7 +91,6 @@ repeat(**args2)
 #     return fib(n-1) + fib(n-2)
 #
 # print([fib(n) for n in range(1, 9)])
-
 
 from time import time
 class Timer():
@@ -120,6 +117,7 @@ with Timer("Elapsed time to compute some prime numbers: {}ms"):
 def use_logging(func):
     print('%s is running' % func.__name__)
     func()
+
 def foo():
     print("I am foo")
 use_logging(foo)
@@ -207,3 +205,4 @@ def f(x):
    return x + x * x
 
 print(f(2))
+
