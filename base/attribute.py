@@ -11,21 +11,12 @@ for i in fib():
     print(i)
 
 a = (x*x for x in range(10))
-# a = [x*x for x in range(10)]
-print(type(a))
-
-print(sum(a))
-
-print(sum(a))
 
 import collections
-
-
 print(dir(collections))
-
 a = collections.Counter('nihaoherain')
 b = collections.Counter('helloword')
-print((a+b).most_common(3))
+print((a+b).most_common())
 
 my_dict = collections.defaultdict(lambda: 'default value')
 my_dict['a'] = 'nihao'
@@ -37,6 +28,7 @@ import json
 
 def aa():
     return 1000
+
 def tree():
     return collections.defaultdict(tree)
 root = tree()
@@ -108,9 +100,10 @@ class Timer():
 
 with Timer("Elapsed time to compute some prime numbers: {}ms"):
     primes = []
-    for x in range(2, 500):
+    for x in range(2, 500): #找素数最快的方法，用any排除法，埃拉托斯特尼 筛选法
         if not any(x % p == 0 for p in primes):
             primes.append(x)
+
     print("Primes: {}".format(primes))
 
 
@@ -135,10 +128,7 @@ def use_log(func):
 @use_log
 def nihao(name):
     print('nihao is func  [%s]' % name)
-
-nihao('vfvf')
-
-
+nihao('vfvf') #等价于执行了 use_log(nihao)()
 
 def use_logging(level):
     def decorator(func):
@@ -149,15 +139,13 @@ def use_logging(level):
                 print("%s is running" % func.__name__)
             return func(*args)
         return wrapper
-
     return decorator
 
 @use_logging(level="warn") # @use_logging(level="warn")等价于@decorator
 def foo(name='foo'):
     print("i am %s" % name)
 
-foo()
-
+foo() #等价于use_logging(level="warn", 'back_fnc'=foo)(name='foo')
 
 # 类装饰器 __init__ 获取函数  __call__ 回调函数
 class Foo(object):
@@ -169,10 +157,10 @@ class Foo(object):
         self._func()
         print('class decorator ending')
 
-@Foo
+@Foo #方法是特殊的类，可以理解类是特殊的方法，应为设置了回调函数__call__所以类可以调用
 def bar():
     print('bar')
-bar()
+bar()#等价于 Foo(bar).__call__()
 
 # 装饰器
 def logged(func):

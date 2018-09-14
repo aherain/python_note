@@ -1,6 +1,4 @@
-
 alist = [23,54,6,787,88,1,-1, 29]
-
 def bubbleSort(ls):
     exchanges = True
     for i in range(len(ls)-1,0,-1):

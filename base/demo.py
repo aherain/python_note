@@ -9,8 +9,6 @@ class MyClass(Singleton):
     a = 1
 s = MyClass()
 print(s.a)
-
-
 def print_directory_contents(spath):
     import os
     for child in os.listdir(spath):
@@ -188,3 +186,5 @@ print(fibs(5))
 #python 简洁 明了 严谨 灵活
 # if __name__ == '__main__':
 #     print_directory_contents('c:\workcode\PL\\base')
+
+
