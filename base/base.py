@@ -8,7 +8,7 @@ squares = [x**2 for x in range(10)]
 print(squares)
 
 string1, string2, string3 = '', 1, 'Hammer Dance'
-non_null = string1 or string2 or string3
+non_null = string1 or string2 or string3 #多个or可以实现优先取值问题
 print(non_null)
 
 for x in range(1, 11):

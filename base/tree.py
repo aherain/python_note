@@ -1,10 +1,10 @@
 #coding=utf-8
-
 class Node(object):
     def __init__(self, elem=-1, lchild=None, rchild=None):
         self.elem = elem
         self.lchild = lchild
         self.rchild = rchild
+
 
 class Tree(object):
     def __init__(self):
@@ -26,7 +26,7 @@ class Tree(object):
                 self.myQueue.append(treeNode.rchild)
                 self.myQueue.pop()
 
-    #层次遍历，前序遍历，中序遍历，后续遍历
+    #层次遍历，前序遍历，中序遍历，后序遍历
 
     def front_digui(self, root):
         if root == None:
@@ -42,14 +42,12 @@ class Tree(object):
         print(root.elem)
         self.middle_digui(root.rchild)
 
-
     def later_digui(self, root):
         if root == None:
             return
         self.later_digui(root.lchild)
         self.later_digui(root.rchild)
         print(root.elem)
-
 
     def front_stack(self, root):
         """利用堆栈实现树的先序遍历"""
@@ -95,7 +93,7 @@ class Tree(object):
                 myStack1.append(node.rchild)
             myStack2.append(node)
         while myStack2:  # 将myStack2中的元素出栈，即为后序遍历次序
-            print(myStack2.pop().elem),
+            print(myStack2.pop().elem)
 
     def level_queue(self, root):
         """利用队列实现树的层次遍历"""

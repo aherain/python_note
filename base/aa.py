@@ -17,3 +17,7 @@ print(map(my_dict.pop, 'a'))
 print('删除多个KEY', my_dict)
 print(my_dict.pop('a'))
 print(my_dict)
+
+import re
+rex = r'(ni|nihao)'
+print(re.sub(rex, 'w1', tmpstr))

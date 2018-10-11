@@ -1,14 +1,36 @@
-class Singleton(object):
-    def __new__(cls, *args, **kw):
-        if not hasattr(cls, '_instance'):
-            orig = super(Singleton, cls)
-            cls._instance = orig.__new__(cls, *args, **kw)
-        return cls._instance
 
-class MyClass(Singleton):
-    a = 1
-s = MyClass()
-print(s.a)
+#使用模块
+#使用装饰器
+#使用类
+#多线程模式下单例模式会出问题，需要加锁解决
+#多线程实现单例模式
+#基于metaclass元类的方式实现
+import threading
+class Singleton(object):
+    _instance_lock = threading.Lock()
+
+    def __init__(self):
+        pass
+
+    def __new__(cls, *args, **kwargs):
+        if not hasattr(Singleton, "_instance"):
+            with Singleton._instance_lock:
+                if not hasattr(Singleton, "_instance"):
+                    Singleton._instance = object.__new__(cls)
+        return Singleton._instance
+
+obj1 = Singleton()
+obj2 = Singleton()
+print(obj1,obj2)
+
+def task(arg):
+    obj = Singleton()
+    print(obj)
+
+for i in range(10):
+    t = threading.Thread(target=task,args=[i,])
+    t.start()
+
 def print_directory_contents(spath):
     import os
     for child in os.listdir(spath):

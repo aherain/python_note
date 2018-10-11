@@ -13,8 +13,6 @@ import os, time, random
 # else:
 #     print("(%s) just created a child process (%s)" % (os.getpid(), pid))
 
-
-
 def run_proc(name):
     print('Run child process %s (%s)...' % (name, os.getpid()))
 
@@ -27,7 +25,7 @@ def write(q):
     for v in ['A', 'B', 'C']:
         q.put(v)
         time.sleep(random.random())
-    print('print ',q)
+    print('print ', q)
 
 
 def read(q):
@@ -51,6 +49,11 @@ if __name__=='__main__':
     # p.start()
     # p.join()
     # print('Child process end.')
+
+    p = Process(target=run_proc, args=('test',))
+    p.start()
+    p.join()
+    print('child process is end')
     #
     # #用线程池的方式批量创建多个子进程
     # p = Pool(4)
@@ -61,6 +64,15 @@ if __name__=='__main__':
     # p.close()
     # p.join()
     # print("all subprocess done")
+
+    p = Pool(4)
+    for i in range(5):
+        p.apply_async(long_time_task, args=(i, ))
+
+    p.close() #关闭进程池
+    p.join() #执行进程连接
+    print("all subprocess done")
+
     #
     # # python进程通信，提供了 队列（Queue）,通道（Pipes）等多种方式
     # q = Queue()
@@ -68,7 +80,6 @@ if __name__=='__main__':
     # pr = Process(target=read, args=(q,))
     # pw.start()
     # pr.start()
-    #
     # pw.join()
     # pr.terminate() #强行终止死循环程序
 

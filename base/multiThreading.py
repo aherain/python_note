@@ -7,22 +7,19 @@ def loop():
         n = n + 1
         print('thread %s  >>> %s'% (threading.current_thread().name,n))
         time.sleep(1)
-    print('thread %s ended' % threading.current_thread().name)
+    print('thread %s ended' % threading.current_thread().name) #标记当前线程执行结束
 
 print('thread %s is running...'% threading.current_thread().name)
 
 t = threading.Thread(target=loop,name='LoopThread') #如果线程不命名会有默认的名字
 t.start()
 t.join()
-print('thread %s ended' % threading.current_thread().name)
+print('thread %s ended' % threading.current_thread().name) #标记主线程调用结束
 
 
-
-
+#多线程操作共同的变量，为了保证结果预期，需要添加线程锁
 balance = 0
 lock = threading.Lock()
-
-
 def change_int(n):
     global balance
     balance = balance + n
@@ -43,7 +40,8 @@ t2 = threading.Thread(target=run_thread, args=(8,))
 t1.start()
 t2.start()
 t1.join()
-t2.join()
+t2.join() #start 和 join顺序影响操作吗？
+
 print(balance)
 
 
