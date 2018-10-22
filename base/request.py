@@ -1,6 +1,4 @@
 import requests
-
-
 # Base URL being accessed
 url = 'http://httpbin.org/post'
 
@@ -15,7 +13,6 @@ headers = {
     'User-agent' : 'none/ofyourbusiness',
     'Spam' : 'Eggs'
 }
-
 resp = requests.post(url, data=parms, headers=headers)
 
 # Decoded text returned by the request
@@ -25,5 +22,4 @@ print(text)
 import requests
 url = 'http://httpbin.org/post'
 files = {'file': ('data.csv', open('data.csv', 'rb'))}
-
 r = requests.post(url, files=files)

@@ -1,17 +1,12 @@
 import heapq
-
 x = [1, 8, 2, 23, 7, -4, 18, 23, 42, 37, 2]
 heap = list(x)
-
 heapq.heapify(heap)
 
 print(heapq.heappop(heap))
 print(heap) #每次通过heappop取出最小值，然后动态堆化heap
 
 #优先级队列 priority queue
-
-
-import heapq
 class PriorityQueue(object):
     def __init__(self):
         self._queue = []  # 创建一个空列表用于存放队列
@@ -25,14 +20,11 @@ class PriorityQueue(object):
     def pop(self):
         return heapq.heappop(self._queue)[-1]  # 返回拥有最高优先级的项
 
-
 class Item(object):
     def __init__(self, name):
         self.name = name
-
     def __repr__(self):
         return 'Item: {!r}'.format(self.name)
-
 
 if __name__ == '__main__':
     q = PriorityQueue()

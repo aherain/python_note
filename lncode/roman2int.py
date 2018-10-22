@@ -222,8 +222,6 @@ def calculate(self, n, k):
     else:
         return k + self.calculate(n - c * k, k / 10) + c * self.calculate(k - 1, k / 10)
 
-
-
 def trailingZeroes(n):
     """
     :type n: int
@@ -233,6 +231,216 @@ def trailingZeroes(n):
     while n >= base:
         res += n // base
         base *= 5
-
     return res
-print(trailingZeroes(125))
+
+def sortArrayByParity(A):
+    """
+    :type A: List[int]
+    :rtype: List[int]
+    """
+    cd1 = []
+    cd2 = []
+    for i in A:
+        print(i % 2)
+        if i % 2 == 0:
+            cd1.append(i)
+        else:
+            cd2.append(i)
+
+    cd1.sort()
+    cd2.sort()
+
+    return cd1+cd2
+
+print(sortArrayByParity([3,1,2,4]))
+
+
+def maxSubArray(nums):
+    """
+    :type nums: List[int]
+    :rtype: int
+    """
+    max_sum, max_end = nums[0], nums[0]
+    for i in range(1, len(nums)):
+        max_end = max(max_end + nums[i], nums[i])
+        max_sum = max(max_sum, max_end)
+    return max_sum
+
+print(maxSubArray([-2,1,-3,4,-1,2,1,-5,4]))
+
+
+from collections import Counter
+a = [0]
+result = Counter(a)
+print(result)
+
+ms,ct = result.most_common(1)[0]
+all_list = []
+for i in result.most_common():
+    if ct == i[1]:
+        all_list.append(i[0])
+    break
+
+mind = len(a)-a[::-1].index(ms) - a.index(ms)
+for c in all_list:
+    mind = min(mind, len(a)-a[::-1].index(c) - a.index(c))
+
+print(mind)
+
+
+def isMonotonic(A):
+    """
+    :type A: List[int]
+    :rtype: bool
+    """
+    n = len(A)
+    count1 = 0
+    count2 = 0
+    for i in range(0, n - 1):
+        temp = A[i + 1] - A[i]
+        if temp >= 0:
+            count1 += 1
+        if temp <= 0:
+            count2 += 1
+    if count1 == n - 1 or count2 == n - 1:
+        return True
+    else:
+        return False
+
+print(isMonotonic([6,5,3,4]))
+
+
+def findMedianSortedArrays(nums1, nums2):
+    """
+    :type nums1: List[int]
+    :type nums2: List[int]
+    :rtype: float
+    """
+    ad = nums1 + nums2
+    ad.sort()
+    if len(ad) % 2 == 0:
+        m = int(len(ad) / 2)
+        mid = sum(ad[m - 1: m + 1]) / 2
+    else:
+        mid = ad[int(len(ad) / 2)]
+    return mid
+
+
+print(findMedianSortedArrays([1, 2], [3, 4]))
+def containsNearbyDuplicate(nums, k):
+    """
+    :type nums: List[int]
+    :type k: int
+    :rtype: bool
+    """
+    lookup = {}
+    for i in range(len(nums)):
+        if nums[i] not in lookup:
+            lookup[nums[i]] = i
+        else:
+            if i - lookup[nums[i]] <= k:
+                return True
+            else:
+                lookup[nums[i]] = i
+    return False
+
+#每一次比较两个数组元素 大的元素放在排在尾部
+def mn_sort(nums1, m, nums2, n):
+    while m > 0 and n > 0:
+        if nums1[m - 1] >= nums2[n - 1]:
+            nums1[m + n - 1] = nums1[m - 1]
+            m = m - 1
+        else:
+            nums1[m + n - 1] = nums2[n - 1]
+            n = n - 1
+    if n > 0:
+        nums1[:n] = nums2[:n]
+
+
+nums1 = [12,23,45, None, None, None, None]
+mn_sort(nums1,3, [11,24,77],3)
+print('ddd',nums1)
+
+pat = "abba"
+str = "dog dog dog dog".split()
+print(dict(zip(pat, str)))
+print(len(set(zip(pat, str))))
+print(len(set(pat)))
+print(len(set(str)))
+
+
+def reverseOnlyLetters(S):
+    p = [i for i in S if i.isalpha()]
+    print(p)
+    b = ''.join([i if not i.isalpha() else p.pop() for i in S])
+    print(b)
+
+S = "Test1ng-Leet=code-Q!"
+reverseOnlyLetters(S)
+
+import collections
+
+a = collections.Counter(["a","a","b","b","c","c","c"])
+back_data = []
+for c, v in a.items():
+    print( c, v)
+    back_data.append(c)
+    if v != 1:
+        back_data.append(v)
+print(back_data)
+
+
+#反转元音字母 【aeiou】
+import re
+s = 'hEllo'
+vowels = re.findall('(?i)[aeiou]', s)
+print(vowels)
+
+def sf(m):
+    return vowels.pop()
+print(re.sub('(?i)[aeiou]', lambda m: vowels.pop(), s))
+
+
+rpt_type='xxxx'
+f = "%s_report_list" % (rpt_type or "month")
+print(f)
+
+nums = [-1,0,3,5,9,12]
+target = 9
+def search(nums, target):
+    left, right = 0, len(nums) - 1
+    while left <= right:
+        print(left, right)
+        mid = (left + right) // 2
+        if nums[mid] == target:
+            return mid
+        elif nums[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+
+nums = [-1,0,3,5,9,12]
+target = 2
+print('二分查找结果', search(nums, target))
+
+
+from collections import Counter
+res = ["plpaboutit","jnoqzdute","sfvkdqf","mjc","nkpllqzjzp","foqqenbey","ssnanizsav","nkpllqzjzp","sfvkdqf","isnjmy","pnqsz","hhqpvvt","fvvdtpnzx","jkqonvenhx","cyxwlef","hhqpvvt","fvvdtpnzx","plpaboutit","sfvkdqf","mjc","fvvdtpnzx","bwumsj","foqqenbey","isnjmy","nkpllqzjzp","hhqpvvt","foqqenbey","fvvdtpnzx","bwumsj","hhqpvvt","fvvdtpnzx","jkqonvenhx","jnoqzdute","foqqenbey","jnoqzdute","foqqenbey","hhqpvvt","ssnanizsav","mjc","foqqenbey","bwumsj","ssnanizsav","fvvdtpnzx","nkpllqzjzp","jkqonvenhx","hhqpvvt","mjc","isnjmy","bwumsj","pnqsz","hhqpvvt","nkpllqzjzp","jnoqzdute","pnqsz","nkpllqzjzp","jnoqzdute","foqqenbey","nkpllqzjzp","hhqpvvt","fvvdtpnzx","plpaboutit","jnoqzdute","sfvkdqf","fvvdtpnzx","jkqonvenhx","jnoqzdute","nkpllqzjzp","jnoqzdute","fvvdtpnzx","jkqonvenhx","hhqpvvt","isnjmy","jkqonvenhx","ssnanizsav","jnoqzdute","jkqonvenhx","fvvdtpnzx","hhqpvvt","bwumsj","nkpllqzjzp","bwumsj","jkqonvenhx","jnoqzdute","pnqsz","foqqenbey","sfvkdqf","sfvkdqf"]
+a = Counter(sorted(res))
+print(a.most_common(1))
+
+
+def isPerfectSquare(x):
+    """
+    :type num: int
+    :rtype: bool
+    """
+    r = x
+    while r * r > x:
+        print('每次R值',(r + x / r) / 2)
+        r = (r + x / r) / 2
+        # r = r/2 + x/(2*r)
+    return r * r == x
+
+isPerfectSquare(9)

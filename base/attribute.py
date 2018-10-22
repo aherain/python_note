@@ -42,18 +42,17 @@ print(type(root['www']), root['www'])
 root['Page']['Python']['default']['Title'] = 'Using default'
 root['Page']['Python']['default']['Subtitle'] = 'Create a tree'
 root['Page']['Java'] = None
-
 print(json.dumps(root, indent=4))
 
 
 import itertools
 print(dir(itertools))
 
-for c in itertools.combinations([1,2,3,4,5],2):
-    print(c)
+for c in itertools.combinations([1,2,3,4,5],2): #两两组合
+    print('combinations', c)
 
-for c in itertools.chain([1,2,3], [8,9,10]):
-    print(c)
+for c in itertools.chain([1,2,3], [8,9,10]): #拼接
+    print('chain', c)
 
 a, *b, c = [2, 7, 5, 6, 3, 4, 1]
 
@@ -91,7 +90,6 @@ repeat(**args2) #调用方法的传参方式
 # print([fib(n) for n in range(1, 9)])
 
 from time import time
-
 class Timer():
     def __init__(self, message):
         self.message = message
@@ -112,16 +110,6 @@ with Timer("Elapsed time to compute some prime numbers: {}ms"):
             primes.append(x)
 
     print("Primes: {}".format(primes))
-
-with Timer("Elapsed time to compute some prime numbers: {}ms"):
-    primes = []
-    for x in range(2, 500):
-        if not any(x % p == 0 for p in primes): #找素数最快的方法，用any排除法， 埃拉托斯特尼 筛选法
-            primes.append(x)
-
-    print("Primes: {}".format(primes))
-
-
 
 
 #装饰器最简单的实现方式，但是需要用装饰器函数包装 原有函数，改动量大，而且模糊业务逻辑

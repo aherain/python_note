@@ -1,7 +1,5 @@
 from multiprocessing import Process, Queue, Pipe
 from multiprocessing import Pool
-
-
 import os, time, random
 
 # print('Process (%s) is Start' % os.getpid())
@@ -35,7 +33,6 @@ def read(q):
         print("GET %s from Write Queue"% v)
 
 #管道通信
-
 def f(conn):
     conn.send([42, None, 'hello'])
     while True:

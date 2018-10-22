@@ -7,18 +7,15 @@
 # '''
 
 from collections import namedtuple
-
 websites = [
     ('Sohu', 'http://www.sohu.com/', '张朝阳'),
     ('Sina', 'http://www.sina.com.cn', '王志东'),
     ('163', 'http://www.163.com/', '丁磊')
 ]
-
 Website = namedtuple('Website', ['name', 'url', 'founder'])
-
 for website in websites:
     website = Website._make(website)
-    print(website[1])
+    print(website.url)
 
 
 import sys
