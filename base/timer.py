@@ -55,8 +55,3 @@ print(t.elapsed)
 with Timer() as t2:
     countdown(1000000)
 print(t2.elapsed)
-
-a = {"nihao":123, 'hh':34}
-b = {'hh':34, "nihao":123}
-print(a,b)
-print(a==b)

@@ -37,6 +37,9 @@ def f(conn):
     conn.send([42, None, 'hello'])
     while True:
         print('子工道',conn.recv())
+        print('终止循环')
+        break
+    return 1
 
 
 if __name__=='__main__':
@@ -72,13 +75,13 @@ if __name__=='__main__':
 
     #
     # # python进程通信，提供了 队列（Queue）,通道（Pipes）等多种方式
-    # q = Queue()
-    # pw = Process(target=write, args=(q,))
-    # pr = Process(target=read, args=(q,))
-    # pw.start()
-    # pr.start()
-    # pw.join()
-    # pr.terminate() #强行终止死循环程序
+    q = Queue()
+    pw = Process(target=write, args=(q,))
+    pr = Process(target=read, args=(q,))
+    pw.start()
+    pr.start()
+    pw.join()
+    pr.terminate() #强行终止死循环程序
 
     #通过管道实现进程之间的通信
     parent_conn, child_conn = Pipe()
@@ -86,7 +89,10 @@ if __name__=='__main__':
     pp.start()
 
     print('双工道', parent_conn.recv())
-    parent_conn.send('6666')
+    parent_conn.send('6666 father')
+    parent_conn.send('nihao zijichangsongziji')
+    child_conn.close()
+    pp.join(3)
 
 
 

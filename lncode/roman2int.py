@@ -443,4 +443,202 @@ def isPerfectSquare(x):
         # r = r/2 + x/(2*r)
     return r * r == x
 
-isPerfectSquare(9)
+# isPerfectSquare(9)
+
+
+def sortArrayByParityII(A):
+    """
+    :type A: List[int]
+    :rtype: List[int]
+    """
+    data = [0] * len(A)
+    o, j = 0, 1
+    for i in A:
+        if i % 2 == 0:
+            data[o] = i
+            o = o + 2
+        else:
+            data[j] = i
+            j = j + 2
+    return data
+
+i = 1 << (len(bin(5))-2)
+
+print(5, bin(5))
+print(i, bin(i))
+print(7, 7^5)
+
+s = "abcd"
+t = "abcde"
+
+from collections import Counter
+print(list((Counter(t) - Counter(s)).keys()).pop())
+
+
+zint = [0,1,2,3,4,5,6,7]
+fint = [-1,-2,-3,-4,-5]
+
+a =3
+b = -5
+
+#同行号
+if a>=0 and b>=0:
+    fz = [i for i in range(0,max(a,b)*2)][a:]
+    fz[b]
+
+
+if a<=0 and b<=0:
+    fz = [i for i in range(0,max(abs(a),abs(b))*2)][abs(a):]
+    -fz[abs(b)]
+
+
+if a*b< 0:
+    zint = [i for i in range(0,max(a,b))]
+    fint = [-i for i in range(1, abs(min(a,b))+1)]
+    fz = fint[:abs(min(a,b))][::-1] + zint
+    fz[max(a,b)]
+
+
+
+nums1 = [1, 2, 2, 1]
+nums2 = [2, 2]
+a, b = map(collections.Counter, (nums1, nums2))
+print(a, b)
+print(a - b)
+print(list((a & b).elements()))
+
+
+A = "this apple is sweet"
+B = "this apple is sour"
+a = Counter(A.split(' '))
+b = Counter(B.split(' '))
+
+print(a+b)
+print([i for i, k in dict(a+b).items() if k == 1])
+print((a+b).values(), sum((a+b).values()))
+print("Counter 中所有的KEYS", (a+b).keys())
+
+
+def nextGreaterElement(findNums, nums):
+    """
+    :type findNums: List[int]
+    :type nums: List[int]
+    :rtype: List[int]
+    """
+    if not nums:
+        return []  # because findNums is subset of nums
+    stack = [nums[0]]
+    lookup = {}
+    for i in range(1, len(nums)):
+
+        while stack and stack[-1] < nums[i]:
+            lookup[stack[-1]] = nums[i]
+            stack = stack[:-1]
+        stack.append(nums[i])  # don't forget to push nums[i]
+    for num in stack:
+        lookup[num] = -1
+    res = []
+    for num in findNums:
+        res.append(lookup[num])
+    return res
+
+# import itertools
+# a = itertools.groupby('13211311123113112211')
+#
+# for d, g in a:
+#     print(len(list(g)), d)
+#
+# print('itertools groupby', dict(a))
+
+class Solutions(object):
+    def addDigits(self, num):
+        """
+        :type num: int
+        :rtype: int
+        """
+        while num / 10 >= 1:
+            tmp = 0
+            while num / 10 >= 1:
+                tmp += num % 10
+                num /= 10
+            tmp += num % 10
+            num = tmp
+        return num
+
+
+a = Solutions()
+print('最后的数字', a.addDigits(38))
+
+def backspaceCompare(S,T):
+    s1, s2 = [], []
+
+    for i in S:
+        if i=='#':
+            if s1:
+                s1.pop()
+        else:
+            s1.append(i)
+    for i in T:
+        if i == '#':
+            if s2:
+                s2.pop()
+        else:
+            s2.append(i)
+    return s1 == s2
+
+S = "ab#cb"
+T = "ad#c"
+backspaceCompare(S, T)
+
+
+def longestPalindrome(s):
+    """
+    :type s: str
+    :rtype: int
+    """
+    # 思路不是将其排列，排列不止一种，采用字典
+    dict = {}
+    length = 0
+    k = 0
+    for s1 in s:
+        if s1 not in dict:
+            dict[s1] = 1
+        else:
+            dict[s1] += 1
+    for value in dict.values():
+        if value % 2 == 0:  # 双数
+            length += value
+        else:
+            length += value - 1  # 当为单数时，可去掉一个变成双数
+            k = 1  # 单数只能出现一次
+    return length + k
+longestPalindrome("abccccdd")
+
+
+nums = [1,2,3]
+res = [[]]
+for num in nums:
+    print(res)
+    res.extend([tmp+[num] for tmp in res])
+
+print(res)
+
+
+#超时了
+c = "UuL5MM"
+mustin = [i.lower() for i in c if i.isalpha()]
+chars = []
+for i in c:
+    if i.isalpha():
+        chars.append(i.lower())
+        chars.append(i.upper())
+import itertools
+alc = list(itertools.combinations(chars, len(mustin)))
+hcc = set([tc for tc in alc if [i.lower() for i in tc] == mustin])
+back_data = [re.sub(r'[a-zA-Z]', '%s', c) % tc for tc in hcc]
+print(set(back_data))
+
+
+nums = [1,2,3,4,5,6,7]
+nums[:] = nums[-3:] + nums[:-3]
+print('逆轉后的數組', nums)

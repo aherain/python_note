@@ -44,16 +44,17 @@ items = (
     ('c', 3)
 )
 
+items = [('a', 1), ('b', 2), ('c', 3)]
 regular_dict = dict(items) #元组中的二维元组也可以转成普通的字典
 
 ordered_dict = OrderedDict(items)
 
+print('将元组转成二维数组',ordered_dict)
 print('Regular Dict:')
 for k, v in regular_dict.items():
     print(k, v)
 
 print('Ordered Dict')
-
 for k, v in ordered_dict.items():
     print(k, v)
 
@@ -75,8 +76,6 @@ for sex, name in members:
 print(result)
 print(result['nihao'])
 
-
-
 def repeat(count, name):
     for i in range(count):
         print(name)
@@ -89,8 +88,6 @@ print("Call function repeat using a dictionary of keyword arguments:")
 args2 = {'count': 4, 'name': 'cats'}
 repeat(**args2) #调用方法的传参方式
 
-
-#
 # def nihao(kwargs):
 #     print(kwargs)
 #

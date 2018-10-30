@@ -18,7 +18,6 @@ import json
 #           'push_msg': '《闺蜜2》本月与贵司可结算分帐款金额1,212,190.00元，请与我司联系收款相关事宜'})
 
 cn = {}
-test_list=['123','456','789']
-cn =cn.fromkeys(test_list,'abc')
+test_list = ['123', '456', '789', '899']
+cn = cn.fromkeys(test_list, 'abc')
 print(cn)
-
