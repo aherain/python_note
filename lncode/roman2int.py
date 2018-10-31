@@ -640,5 +640,28 @@ print(set(back_data))
 
 
 nums = [1,2,3,4,5,6,7]
-nums[:] = nums[-3:] + nums[:-3]
+nums = nums[-3:] + nums[:-3]
 print('逆轉后的數組', nums)
+
+
+ab = itertools.zip_longest([1,2,3], [1],fillvalue=0)
+
+print("xxxxx", list(ab))
+
+
+nums = [1, 3, 4, 1]
+last, now = 0, 0
+for num in nums:
+    print(last, now, num)
+    last, now = now, max(last+num, now)
+print('打家劫舍', now)
+
+
+
+ans = ''
+n = 27
+while n :
+    ans = chr(ord('A') + (n - 1) % 26) + ans
+    n = (n - 1) // 26
+
+print('ans', ans)
