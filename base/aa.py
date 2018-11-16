@@ -7,7 +7,7 @@
 # print(b[::-1])
 
 tmpstr = 'nihao 12 nihao'
-print(tmpstr.replace('nihao', 'we', -1))
+print(tmpstr.replace('nihao', 'we', -1)) #全部替换
 import re
 rex = r'(ni|hao)'
 print(re.sub(rex, 'w1', tmpstr))

@@ -9,3 +9,6 @@ if True:
     task2.multiply.apply_async(args=[3, 7])  # 也可用 task2.multiply.delay(3, 7)
     print '计算任务已经派发，5秒后将进行下一次任务派发'
     time.sleep(5)
+
+#需要在根目录运行
+#celery -A celery_app worker --loglevel=info

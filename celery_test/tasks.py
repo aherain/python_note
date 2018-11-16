@@ -13,3 +13,13 @@ def add(x, y):
     time.sleep(5)
     return x+y
 
+
+
+#单个测试用例
+#启动：
+#celery worker -A tasks --loglevel=info
+
+
+# >>> from tasks import add
+# >>> add.delay(2,8)
+

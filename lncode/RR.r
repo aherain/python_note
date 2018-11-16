@@ -128,6 +128,7 @@ round(tt,4)
 count1<-table(example2_1$性别)
 count2<-table(exanple2_1$牛奶品牌)
 
+
 par(mfcol=c(1,2), cex=0.6)
 barplot(count1, xlab="性别", ylab="频数", main = "(a) 垂直条形图")
 barplot(count2, xlab="频数", ylab="牛奶品牌", horiz=TRUE, main="(b) 水平条形图")
@@ -209,8 +210,6 @@ for(i in i:nr){
 二是，数据差异，反映各数据间的离散程度；（方差，标准差，变异系数s/x, 标准得分（x1-x）/s）
 三是，分布的形状，反映数据分布的偏态和峰度 (偏态，峰度)
 
-
-
 library(pastecs)
 round(stat.desc(example3_5),4)
 
@@ -218,16 +217,13 @@ library(psych)
 describe(example3_5)
 /////
 
-
-
-
 二项分布，伯努利使实验，n次独立事件中，在成功概率p下，出现成功的次数m的概率。
 dbinom(=m, n, p)
 pbinom(<=m, m, p)
 
 正态分布，高斯， 评估数据正态分布性用p-p图和Q-Q图
 
-t分布，也称学生分布，类似正态分布，参数：自由度参数
+t分布，也称学生分布，类似正态分布，参数：自由度参数  正态分布除以（一个X^2分布除以它的自由度然后开根号）
 pt(-2,df=10)
 1-pt(3, df=10)
 
@@ -235,4 +231,4 @@ pt(-2,df=10)
 pchisq(10, df=15)
 qchisq(0.95, df=10)
 
-F分布 是两个卡方的比，F = (kf1/n1)/(kf2/n2)   需要两个自由度参数n1,n2
+F分布 是两个卡方的比，F = (kf1/n1)/(kf2/n2)  需要两个自由度参数n1,n2

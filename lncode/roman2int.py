@@ -645,7 +645,6 @@ print('逆轉后的數組', nums)
 
 
 ab = itertools.zip_longest([1,2,3], [1],fillvalue=0)
-
 print("xxxxx", list(ab))
 
 
@@ -665,3 +664,22 @@ while n :
     n = (n - 1) // 26
 
 print('ans', ans)
+
+S = '12345'
+flag = 0
+listd = [S]
+for i in range(0, len(S)):
+    if not S[i].isdigit():
+        if flag == 0:
+            listd.append(S[:i]+(S[i].lower() if S[i].isupper() else S[i].upper()) + S[i+1:])
+            flag = 1
+        else:
+            a = [aa[:i]+(aa[i].lower() if aa[i].isupper() else aa[i].upper())+aa[i+1:] for aa in listd]
+            listd = listd + a
+
+
+print(listd)
+
+
+
+

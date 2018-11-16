@@ -12,7 +12,6 @@ for i in fib():
     print(i)
 
 a = (x*x for x in range(10))
-a = (x*x for x in range(10))
 print('你好', a)
 
 import collections
@@ -71,23 +70,6 @@ repeat(*args)
 print("Call function repeat using a dictionary of keyword arguments:")
 args2 = {'count': 4, 'name': 'cats'}
 repeat(**args2) #调用方法的传参方式
-# def cache(function):
-#     cached_values = {}
-#     def wrapping_function(*args):
-#         if args not in cached_values:
-#             cached_values[args] = function(*args)
-#
-#         return cached_values[args]
-#     return wrapping_function
-#
-# @cache
-# def fib(n):
-#     print('calling fibonacci(%s)' % n)
-#     if n < 2:
-#         return n
-#     return fib(n-1) + fib(n-2)
-#
-# print([fib(n) for n in range(1, 9)])
 
 from time import time
 class Timer():
@@ -129,6 +111,7 @@ def use_log(func):
         print('%s is running' % func.__name__)
         return func(name)
     return wrapper
+
 @use_log
 def nihao(name):
     print('nihao is func  [%s]' % name)

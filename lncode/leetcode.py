@@ -162,3 +162,26 @@ d = deque()
 d.extendleft(a)
 print(d)
 print(''.join(d))
+
+
+class Solution(object):
+    def shortestToChar(self, S, C):
+        """
+        :type S: str
+        :type C: str
+        :rtype: List[int]
+        """
+        res = []
+        for i in range(len(S)):
+            if S[i] == C:
+                res.append(0)
+                continue
+
+            r = S.find(C, i + 1)
+            l = S.rfind(C, 0, i) if i != 0 else -1
+            if l != -1 and r != -1:
+                res.append(min(i - l, r - i))
+            else:
+                res.append(i - l) if r == -1 else res.append(r - i)
+
+        return res
