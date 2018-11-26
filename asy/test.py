@@ -2,10 +2,12 @@ import time
 import asyncio
 
 now = lambda : time.time()
-
 async def do_some_work(x):
     print('waiting:', x)
     return 1
+
+#最大的优势用同步的方式写异步的程序
+# print('直接调用异步方法:', do_some_work(21))
 
 start = now()
 coroutine = do_some_work(1212)
@@ -14,17 +16,22 @@ loop.run_until_complete(coroutine)
 print('TIME', now() - start)
 
 
-corouti_1 = do_some_work('包成task任务，可以查看任务状态')
-task = loop.create_task(corouti_1)
-print(task)
-loop.run_until_complete(task)
-print(task)
-
-
 #绑定回调
 def callback(future):
     print('Callback', future.result())
 
+
+#create_task 方式创建任务
+corouti_1 = do_some_work('包成task任务，可以查看任务状态')
+task = loop.create_task(corouti_1) #通过事件的循环体可以创建一个任务，可以检测任务的执行执行状态
+task.add_done_callback(callback)
+print(task)
+loop.run_until_complete(task)
+print('任务的计算结果', task.result())
+
+
+
+#ensure_future方式创建任务
 counit2 = do_some_work('绑定回调函数')
 loop = asyncio.get_event_loop()
 task = asyncio.ensure_future(counit2)
@@ -68,7 +75,8 @@ tasks = [
 ]
 
 loop = asyncio.get_event_loop()
-loop.run_until_complete(asyncio.wait(tasks))
+asy_tasks = asyncio.wait(tasks) #包装成等待的任务列表
+loop.run_until_complete(asy_tasks)
 
 for task in tasks:
     print('Task ret:', task.result())
@@ -77,10 +85,10 @@ print('TIME：', now() - start)
 
 
 #协程套协程
-
-print("携程套携程")
+print("协程嵌套协程")
 async def main():
     dones, pendings = await asyncio.wait(tasks)
+    print('nihao1234', dones, pendings)
     for task in dones:
         print("Task ret：", task.result())
 
@@ -90,13 +98,11 @@ result1 = loop.run_until_complete(main())
 
 #asyncio.gather 使用的案例
 async def main1():
-    return await asyncio.gather(*task)
+    return await asyncio.gather(*tasks)
 
 loop = asyncio.get_event_loop()
 results = loop.run_until_complete(main1())
 for res in results:
     print('fianal result：', res)
-
-
 #aiohttp
 

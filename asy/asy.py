@@ -19,7 +19,7 @@ async def init(loop):
     print('Server started at http://127.0.0.1:8000...')
     return srv
 
-loop = asyncio.get_event_loop()
+loop = asyncio.get_event_loop() #创建一个异步循环体
 loop.run_until_complete(init(loop))
 loop.run_forever()
 

@@ -14,7 +14,7 @@ def push_msg(kwargs):
     return back_data['result']
 
 
-# push_msg({'task_type': 2, 'pid': 'GF2017116', 'name': '闺蜜2', 'cooperator_id': 8,
+# push_msg({'task_type': 2, 'pid': 'GF2017116', 'name': '闺蜜2', 'cooperator_id': 1,
 #           'push_msg': '该消息为测试标题功能的消息，请忽略',
 #           'push_title': 'aa' if None else ''})
 

@@ -111,30 +111,17 @@ def use_log(func):
         print('%s is running' % func.__name__)
         return func(name)
     return wrapper
+#装饰器的常规套路 函数封装函数
+
 
 @use_log
 def nihao(name):
     print('nihao is func  [%s]' % name)
+
 nihao('vfvf') #等价于执行了 use_log(nihao)()
 
 
 #装饰器函数接收参数，实现个性化打印日志记录，特定样式的类型
-def use_logging(level):
-    def decorator(func):
-        def wrapper(*args, **kwargs):
-            if level == "warn":
-                print("%s is running" % func.__name__)
-            elif level == "info":
-                print("%s is running" % func.__name__)
-            return func(*args)
-        return wrapper
-    return decorator
-
-@use_logging(level="warn") # @use_logging(level="warn")等价于@decorator
-def foo(name='foo'):
-    print("i am %s" % name)
-
-
 def use_logging(level):
     def decorator(func):
         def wrapper(*args, **kwargs):
@@ -151,9 +138,11 @@ def use_logging(level):
 def foo(name='foo'):
     print('I am %s ' % name)
 foo() #等价于use_logging(level="warn", 'back_fnc'=foo)(name='foo')
-
+#等价于 use_logging(level="warn", 'back_fnc'= foo)(name = 'foo')
 
 # 类装饰器 __init__ 获取函数  __call__ 回调函数
+def nihao():
+    print('nihao123')
 class Foo(object):
     def __init__(self, func):
         self._func = func
@@ -163,8 +152,13 @@ class Foo(object):
         self._func()
         print('class decorator ending')
 
+print('实例化-----------------------')
+nw = Foo(nihao)() #用call方法调用
+print('实例化foo--------------------')
 
-@Foo #方法是特殊的类，可以理解类是特殊的方法，应为设置了回调函数__call__所以类可以调用
+
+
+@Foo #方法是特殊的类，可以理解类是特殊的方法，应为设置了回调函数__call__所有类可以调用
 def bar():
     print('bar')
 bar()#等价于 Foo(bar).__call__()

@@ -11,10 +11,14 @@ print(str.find(substr, 10, 0))
 
 
 
+class Solution(object):
+    def reorderLogFiles(self, logs):
+        """
+        :type logs: List[str]
+        :rtype: List[str]
+        """
+        def helper(log):
+            _id, rest = log.split(" ", 1)
+            return (0, rest, _id) if rest[0].isalpha() else (1,)
 
-import datetime
-a = ('GF2018067', '001105832018', '1', 4300, 95, 1959, 5906200, 295310, 192668, 300, 5418222, datetime.date(2018, 6, 1), datetime.date(2018, 8, 31), 2329835)
-
-b= ('GF2018067', '001105832018', '1', 4300, 95, 1959, 5906200, 295310, 192668, 300, 5418222, datetime.date(2018, 6, 1), datetime.date(2018, 8, 31), 2329835)
-
-print('元组比较',a==b)
+        return sorted(logs, key=helper)

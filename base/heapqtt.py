@@ -28,7 +28,7 @@ heapq.heapreplace(mylist, 2)
 print('取出元素，顺便添加', mylist)
 
 from functools import reduce
-a = reduce(lambda x,y: x*y, [1, 3, 5, 7, 9])
+a = reduce(lambda x, y: x*y, [1, 3, 5, 7, 9])
 print(a)
 
 

@@ -44,10 +44,10 @@ a0 = dict(zip(('a', 'b', 'c', 'd', 'e'), (1, 2, 3, 4, 5)))
 print(a0)
 a1 = range(10)
 print(a1)
-a2= [i for i in a1 if i in a0]
+a2 = [i for i in a1 if i in a0]
 print(a2)
 
-a3=[a0[s] for s in a0]
+a3 = [a0[s] for s in a0]
 print(a3)
 
 a4 = [i for i in a1 if i in a3]

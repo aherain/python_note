@@ -12,6 +12,8 @@ websites = [
     ('Sina', 'http://www.sina.com.cn', '王志东'),
     ('163', 'http://www.163.com/', '丁磊')
 ]
+
+#创建 将元组数据 namedtuple 化，方便数据的访问
 Website = namedtuple('Website', ['name', 'url', 'founder'])
 for website in websites:
     website = Website._make(website)
@@ -21,9 +23,7 @@ for website in websites:
 import sys
 import time
 from collections import deque
-
 fancy_loading = deque('>------------')
-
 # while True:
 #     print('\r%s' % ''.join(fancy_loading))
 #     fancy_loading.rotate(1)
@@ -49,7 +49,7 @@ regular_dict = dict(items) #元组中的二维元组也可以转成普通的字�
 
 ordered_dict = OrderedDict(items)
 
-print('将元组转成二维数组',ordered_dict)
+print('将元组转成二维数组', ordered_dict)
 print('Regular Dict:')
 for k, v in regular_dict.items():
     print(k, v)

@@ -66,9 +66,6 @@ class BinaryTree:
     def getRootVal(self):
         return self.key
 
-
-
-
 r = BinaryTree('a')
 print(r.getRootVal())
 print(r.getLeftChild())
@@ -80,34 +77,3 @@ print(r.getRightChild())
 print(r.getRightChild().getRootVal())
 r.getRightChild().setRootVal('hello')
 print(r.getRightChild().getRootVal())
-
-
-class Solution(object):
-    def rotateRight(self, head, k):
-        """
-        :type head: ListNode
-        :type k: int
-        :rtype: ListNode
-        """
-        p = head
-        length = 0
-        while p:
-            length += 1
-            p = p.next
-
-        dummy = ListNode(0)
-        dummy.next = head
-        curr1 = curr2 = dummy
-
-        if not dummy.next:
-            return dummy.next
-        for _ in range(0, k % length):
-            curr1 = curr1.next
-
-        while curr1.next:
-            curr1 = curr1.next
-            curr2 = curr2.next
-        curr1.next = dummy.next
-        dummy.next = curr2.next
-        curr2.next = None
-        return dummy.next
