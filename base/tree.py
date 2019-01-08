@@ -5,7 +5,6 @@ class Node(object):
         self.lchild = lchild
         self.rchild = rchild
 
-
 class Tree(object):
     def __init__(self):
         self.root = Node()
@@ -13,7 +12,7 @@ class Tree(object):
 
     def add(self, elem):
         node = Node(elem)
-        if self.root.elem == -1: #如果树是空的，则对根节点赋值
+        if self.root.elem == -1:
             self.root = node
             self.myQueue.append(self.root)
         else:
@@ -25,8 +24,6 @@ class Tree(object):
                 treeNode.rchild = node
                 self.myQueue.append(treeNode.rchild)
                 self.myQueue.pop()
-
-    #层次遍历，前序遍历，中序遍历，后序遍历
 
     def front_digui(self, root):
         if root == None:
@@ -50,32 +47,33 @@ class Tree(object):
         print(root.elem)
 
     def front_stack(self, root):
-        """利用堆栈实现树的先序遍历"""
         if root == None:
             return
         myStack = []
         node = root
         while node or myStack:
-            while node:  # 从根节点开始，一直找它的左子树
-                print(node.elem),
+            while node:
+                print(node.elem)#第一步打印根节点的值
                 myStack.append(node)
-                node = node.lchild
-            node = myStack.pop()  # while结束表示当前节点node为空，即前一个节点没有左子树了
-            node = node.rchild  # 开始查看它的右子树
+                node = node.lchild #第二步打印左子树
+
+            node = myStack.pop()
+            node = node.rchild #第三步打印右子树
 
     def middle_stack(self, root):
-        """利用堆栈实现树的中序遍历"""
         if root == None:
             return
         myStack = []
         node = root
         while node or myStack:
-            while node:  # 从根节点开始，一直找它的左子树
+            while node:
                 myStack.append(node)
                 node = node.lchild
-            node = myStack.pop()  # while结束表示当前节点node为空，即前一个节点没有左子树了
-            print(node.elem),
-            node = node.rchild  # 开始查看它的右子树
+
+            node = myStack.pop()
+            print(node.elem)
+            node = node.rchild
+
 
     def later_stack(self, root):
         """利用堆栈实现树的后序遍历"""
