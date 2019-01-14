@@ -7,3 +7,7 @@
 
 分区容错性指“the system continues to operate despite arbitrary message loss or failure of part of the system”，
 即分布式系统在遇到某节点或网络分区故障的时候，仍然能够对外提供满足一致性和可用性的服务。
+
+
+0 快速结算,  1分次结算,   2分次60天结算,  3预结算
+最终结算单独表，进出口结算也是单独表， 二级市场结算单独的表， 投资结算
