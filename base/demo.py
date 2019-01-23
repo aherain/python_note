@@ -266,37 +266,6 @@ print(fibs(5))
 #修理最终结算表中的数据
 #有问题的结算表
 
-#R画佩奇
-
-# 主要运用
-curve(expr, from = NULL, to = NULL, n = 101, add = FALSE,
-type = "l", xname = "x", xlab = xname, ylab = NULL, log = NULL, xlim = NULL, ...)
-
-#face
-# plotrix包里面的draw.ellipse函数 画椭圆
-# featurePlot(x=x, y=y, plot="ellipse")
-# 画圆
-# library(plotrix)
-# x11(width = 20, height = 20)
-# plot(0, 0, main = "Naive RHD",xlim=c(0,4),ylim=c(0,4),xaxs = "i", yaxs = "i")
-# grid(nx=4, ny=4,lwd=1,lty=1,col="blue")
-# draw.circle(2,2,1)
-
-#点动成线的方式
-
-# x <- seq(-4, 4, 0.01)
-# y <- x^2
-# par(mfrow = c(2, 2), mar = c(4, 4, 1, 1))
-# plot(x, y)   # 未作处理
-# plot(x, y,  xaxs = "i", yaxs ="i")   # 绘图边框未留白
-# plot(x, y, bty = 'l')   # 只保留左和下两条边框
-# plot(x, y, ann = F, bty = "n", xaxt = "n", yaxt ="n")   # 边框、坐标轴都去掉
-
-
-
-myface <- function(s1, s1){
-    return
-}
 
 
 
