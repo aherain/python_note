@@ -33,6 +33,7 @@
 import math
 pi, cos, sin = math.pi, math.cos, math.sin
 #轮廓点
+
 def outline(star=0, end=100, step=5):
     """
     :return: 
@@ -52,6 +53,7 @@ outline(0,0,0)
 
 # c(c1,c2)或 union(c1,c2) #拼接向量点
 #Rscript test.R 脚本运行的方式
+# C:/Users/heyu/desktop/test.R
 #.libPaths() #查询安装的包 library(), search()
 # install.packages("Package Name")
 #
@@ -100,7 +102,3 @@ def ear(star=0, end=100, step=5):
 
     x1 = [round((2 * t ** 2 - 2 * t - 1) * sin(t/3),2) for t in [i/100 for i in range(0,100,5)]]
     y1 = [round(-(2 * t ** 2 - 2 * t - 1) * cos(t/3),2) for t in [i/100 for i in range(0,100,5)]]
-
-
-
-
