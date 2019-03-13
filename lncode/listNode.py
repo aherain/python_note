@@ -28,7 +28,11 @@ p1.next = p2
 p2.next = p3
 
 newhead = None
-p=recurse(head, newhead)
+p = recurse(head, newhead)
 while p:
     print(p.val)
     p = p.next
+
+
+#模拟人生
+#10000, 10，+1，+1

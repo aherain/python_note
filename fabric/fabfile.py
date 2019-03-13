@@ -5,3 +5,5 @@ def hello():
           is very convenient [方便，便利，便于]
           """)
     print("hello world")
+
+hello()

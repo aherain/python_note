@@ -1,5 +1,5 @@
 class Target:
-    def Request():
+    def Request(self):
         print("common request.")
 
 class Adaptee(Target):
@@ -7,7 +7,7 @@ class Adaptee(Target):
         print("specific request.")
 
 class Adapter(Target):
-    def __init__(self,ada):
+    def __init__(self, ada):
         self.adaptee = ada
     def Request(self):
         self.adaptee.SpecificRequest()

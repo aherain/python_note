@@ -37,6 +37,4 @@ if __name__ == "__main__":
     p.Attach(s2)
     p.action = "WARNING:BOSS "
     p.Notify()
-
-
 #抽象工厂模式

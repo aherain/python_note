@@ -8,6 +8,7 @@ class TestPaper:
         print("(%s)" % self.Answer2())
     def Answer1(self):
         return ""
+
     def Answer2(self):
         return ""
 
@@ -26,6 +27,7 @@ class TestPaperB(TestPaper):
 if __name__ == "__main__":
     s1 = TestPaperA()
     s2 = TestPaperB()
+
     print("student 1")
     s1.TestQuestion1()
     s1.TestQuestion2()

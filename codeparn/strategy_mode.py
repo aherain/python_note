@@ -42,7 +42,6 @@ if __name__ == "__main__":
                 3: CashContext(CashReturn(300, 100))}
 
     ctype = input('settle way 1,2,3')
-
     cc = strategy.get(int(ctype), '')
     if cc:
         print(cc.GetResult(money))

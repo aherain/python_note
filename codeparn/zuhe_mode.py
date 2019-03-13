@@ -38,4 +38,4 @@ if __name__ == "__main__":
     p1 = Composite("Wu")
     p1.Add(Leaf("San"))
     p.Add(p1)
-    p.Display(1);
+    p.Display(1)

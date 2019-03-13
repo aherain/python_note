@@ -19,7 +19,5 @@ def add(x, y):
 #启动：
 #celery worker -A tasks --loglevel=info
 
-
 # >>> from tasks import add
 # >>> add.delay(2,8)
-

@@ -38,5 +38,3 @@ if __name__ == "__main__":
     bt.decorate(p)
     ts.decorate(bt)
     ts.show()
-
-    ts.show()

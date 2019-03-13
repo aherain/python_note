@@ -7,7 +7,7 @@
 class Singleton(object):
     def __new__(cls, *args, **kw):
         if not hasattr(cls, '_instance'):
-            orig = super(Singleton, cls)
+            orig = super(Singleton, cls) #Single 的上一个类，就是父类object
             cls._instance = orig.__new__(cls, *args, **kw)
         return cls._instance
 
