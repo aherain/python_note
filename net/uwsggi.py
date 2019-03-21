@@ -5,8 +5,6 @@ def application(env, start_response):
 
 # uwsgi --http :9090 --wsgi-file uwsggi.py --master --processes 4 --threads 2
 
-
-
 # [uwsgi]
 # socket = 127.0.0.1:9090
 # master = true         //主进程

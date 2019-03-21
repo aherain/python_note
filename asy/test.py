@@ -7,10 +7,11 @@ async def do_some_work(x):
     return 1
 
 #最大的优势用同步的方式写异步的程序
-# print('直接调用异步方法:', do_some_work(21))
+print('直接调用异步方法:', do_some_work(21))
 
 start = now()
 coroutine = do_some_work(1212)
+print("""corountine""", coroutine)
 loop = asyncio.get_event_loop()
 loop.run_until_complete(coroutine)
 print('TIME', now() - start)

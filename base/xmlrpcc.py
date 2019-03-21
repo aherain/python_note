@@ -7,7 +7,6 @@ class RequestHandler(SimpleXMLRPCRequestHandler):
 
 
 server = SimpleXMLRPCServer(("localhost", 8000), requestHandler=RequestHandler)
-# server = SimpleXMLRPCServer(("localhost", 8000))
 server.register_introspection_functions()
 
 server.register_function(pow)
