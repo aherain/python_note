@@ -7,6 +7,7 @@ def bubbleSort(ls):
         if exchanges:
             exchanges = False
         for j in range(i):
+
             if ls[j]>ls[j+1]:
                 exchanges = True
                 temp = ls[j]
