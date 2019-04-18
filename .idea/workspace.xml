@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f59dd649-fa55-48f0-84df-7bb865b3102c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/anlysis.py" afterPath="$PROJECT_DIR$/test/anlysis.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pyChartjs/dome.py" afterPath="$PROJECT_DIR$/pyChartjs/dome.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,8 +21,8 @@
       <file leaf-file-name="dome.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pyChartjs/dome.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+            <state relative-caret-position="614">
+              <caret line="33" column="14" lean-forward="true" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
               </folding>
@@ -134,8 +134,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="218" />
-    <option name="y" value="16" />
+    <option name="x" value="814" />
+    <option name="y" value="11" />
     <option name="width" value="1526" />
     <option name="height" value="1359" />
   </component>
@@ -529,7 +529,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="218" y="16" width="1526" height="1359" extended-state="0" />
+    <frame x="814" y="11" width="1526" height="1359" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33562586" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -881,8 +881,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pyChartjs/dome.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+        <state relative-caret-position="614">
+          <caret line="33" column="14" lean-forward="true" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
           <folding>
             <element signature="e#0#48#0" expanded="true" />
           </folding>
