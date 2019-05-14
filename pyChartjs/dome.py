@@ -43,3 +43,35 @@ make_snapshot(driver, bar_chart().render(), "bar.png")
 # 你还将信将疑，你可以运用数学的加减乘除核对一遍。
 # 所以你还会选择那个看似美好数字背后却不美好的高延迟率的 西部航空吗？明白人都不会选择
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# uni_chains 需要添加一条新院线
+# uni_name_chains 需要6全称和0简称的检测， 8中影检测
+#
+# bpm_zoneversion 院线的大版本
+# bpm_zonechains 院线甲乙区
+
+
+
+
+
+
+
+
+
+

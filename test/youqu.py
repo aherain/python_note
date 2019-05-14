@@ -15,5 +15,4 @@ a = a or {}
 a = a if a else {}
 
 first, *new, last = [94, 85, 73, 46]
-
 print(new)
