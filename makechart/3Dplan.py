@@ -8,7 +8,7 @@ fig = plt.figure()
 ax = Axes3D(fig)
 
 x = np.arange(-4, 4, 0.25)
-y = np.arange(-4,4,0.25)
+y = np.arange(-4, 4, 0.25)
 x, y = np.meshgrid(x, y)
 r = np.sqrt(x**2+y**2)
 z = np.sin(r)
