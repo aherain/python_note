@@ -1,0 +1,40 @@
+
+[2019-08-05 17:01:35] Traceback (most recent call last):
+  File "test.py", line 246, in <module>
+    main()
+  File "test.py", line 42, in main
+    cef.Initialize(settings=settings)
+  File "cefpython_py36.pyx", line 631, in cefpython_py36.Initialize
+  File "settings.pyx", line 133, in cefpython_py36.SetApplicationSettings
+Exception: Invalid appSettings key: BrowserSettings
+
+
+[2019-08-05 17:13:01] Traceback (most recent call last):
+  File "test.py", line 234, in OnInit
+    self.initialize()
+  File "test.py", line 242, in initialize
+    frame = MainFrame()
+  File "test.py", line 108, in __init__
+    self.embed_browser()
+  File "test.py", line 137, in embed_browser
+    HTML_code = open("index.html", "r").read()
+UnicodeDecodeError: 'gbk' codec can't decode byte 0x88 in position 129: illegal multibyte sequence
+
+
+[2019-08-05 17:26:58] Traceback (most recent call last):
+  File "test.py", line 251, in OnInit
+    self.initialize()
+  File "test.py", line 259, in initialize
+    frame = MainFrame()
+  File "test.py", line 125, in __init__
+    self.embed_browser()
+  File "test.py", line 154, in embed_browser
+    HTML_code = open("index.html").read()
+UnicodeDecodeError: 'gbk' codec can't decode byte 0x88 in position 129: illegal multibyte sequence
+
+
+[2019-08-06 10:31:17] Traceback (most recent call last):
+  File "test.py", line 182, in on_a
+    self.br.GetMainFrame().ExecuteFunction('Ext.action', 'xx')
+AttributeError: 'MainFrame' object has no attribute 'br'
+
