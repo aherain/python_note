@@ -70,7 +70,7 @@ def main():
     app.MainLoop()
     del app  # Must destroy before calling Shutdown
     if not MAC:
-        # On Mac shutdown is called in OnClose
+        # On Mac shutdow n is called in OnClose
         cef.Shutdown()
 
 
