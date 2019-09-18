@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.link {
+  fill: none;
+  stroke: #666;
+  stroke-width: 1.5px;
+}
+
+.node circle {
+  fill: #ccc;
+  stroke: #fff;
+  stroke-width: 2px;
+}
+
+text {
+  font: 18px sans-serif;
+  pointer-events: none;
+  font-weight: 500;
+}
+
+</style>
+<body>
+<!--<script src="//d3js.org/d3.v3.min.js"></script>-->
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script>
+
+// http://blog.thomsonreuters.com/index.php/mobile-patent-suits-graphic-of-the-day/
+var links = [
+//{source: '鼠', target: '龙', type: 'licensing'},
+//{source: '鼠', target: '猴', type: 'licensing'},
+//{source: '鼠', target: '牛', type: 'licensing'},
+//{source: '牛', target: '鼠', type: 'licensing'},
+//{source: '牛', target: '蛇', type: 'licensing'},
+//{source: '牛', target: '鸡', type: 'licensing'},
+//{source: '虎', target: '马', type: 'licensing'},
+//{source: '虎', target: '狗', type: 'licensing'},
+//{source: '兔', target: '羊', type: 'licensing'},
+//{source: '兔', target: '狗', type: 'licensing'},
+//{source: '兔', target: '猪', type: 'licensing'},
+//{source: '龙', target: '鼠', type: 'licensing'},
+//{source: '龙', target: '猴', type: 'licensing'},
+//{source: '龙', target: '鸡', type: 'licensing'},
+//{source: '蛇', target: '牛', type: 'licensing'},
+//{source: '蛇', target: '鸡', type: 'licensing'},
+//{source: '马', target: '虎', type: 'licensing'},
+//{source: '马', target: '羊', type: 'licensing'},
+//{source: '马', target: '狗', type: 'licensing'},
+//{source: '羊', target: '兔', type: 'licensing'},
+//{source: '羊', target: '马', type: 'licensing'},
+//{source: '羊', target: '猪', type: 'licensing'},
+//{source: '猴', target: '鼠', type: 'licensing'},
+//{source: '猴', target: '龙', type: 'licensing'},
+//{source: '鸡', target: '牛', type: 'licensing'},
+//{source: '鸡', target: '龙', type: 'licensing'},
+//{source: '鸡', target: '蛇', type: 'licensing'},
+//{source: '狗', target: '虎', type: 'licensing'},
+//{source: '狗', target: '兔', type: 'licensing'},
+//{source: '狗', target: '马', type: 'licensing'},
+//{source: '猪', target: '羊', type: 'licensing'},
+//{source: '猪', target: '兔', type: 'licensing'},
+
+{source: '鼠', target: '羊', type: 'resolved'},
+{source: '鼠', target: '马', type: 'resolved'},
+{source: '鼠', target: '兔', type: 'resolved'},
+{source: '鼠', target: '鸡', type: 'resolved'},
+{source: '牛', target: '龙', type: 'resolved'},
+{source: '牛', target: '马', type: 'resolved'},
+{source: '牛', target: '羊', type: 'resolved'},
+{source: '牛', target: '狗', type: 'resolved'},
+{source: '牛', target: '兔', type: 'resolved'},
+{source: '虎', target: '蛇', type: 'resolved'},
+{source: '虎', target: '猴', type: 'resolved'},
+{source: '兔', target: '鼠', type: 'resolved'},
+{source: '兔', target: '牛', type: 'resolved'},
+{source: '兔', target: '龙', type: 'resolved'},
+{source: '兔', target: '鸡', type: 'resolved'},
+{source: '兔', target: '马', type: 'resolved'},
+{source: '龙', target: '狗', type: 'resolved'},
+{source: '龙', target: '牛', type: 'resolved'},
+{source: '龙', target: '龙', type: 'resolved'},
+{source: '龙', target: '兔', type: 'resolved'},
+{source: '蛇', target: '虎', type: 'resolved'},
+{source: '蛇', target: '猴', type: 'resolved'},
+{source: '蛇', target: '猪', type: 'resolved'},
+{source: '马', target: '鼠', type: 'resolved'},
+{source: '马', target: '牛', type: 'resolved'},
+{source: '马', target: '兔', type: 'resolved'},
+{source: '马', target: '马', type: 'resolved'},
+{source: '羊', target: '鼠', type: 'resolved'},
+{source: '羊', target: '牛', type: 'resolved'},
+{source: '羊', target: '狗', type: 'resolved'},
+{source: '猴', target: '虎', type: 'resolved'},
+{source: '猴', target: '蛇', type: 'resolved'},
+{source: '猴', target: '猪', type: 'resolved'},
+{source: '鸡', target: '兔', type: 'resolved'},
+{source: '鸡', target: '鸡', type: 'resolved'},
+{source: '鸡', target: '狗', type: 'resolved'},
+{source: '狗', target: '牛', type: 'resolved'},
+{source: '狗', target: '龙', type: 'resolved'},
+{source: '狗', target: '羊', type: 'resolved'},
+{source: '狗', target: '鸡', type: 'resolved'},
+{source: '猪', target: '蛇', type: 'resolved'},
+{source: '猪', target: '猪', type: 'resolved'},
+{source: '猪', target: '猴', type: 'resolved'}
+];
+
+var nodes = {};
+
+// Compute the distinct nodes from the links.
+links.forEach(function(link) {
+  link.source = nodes[link.source] || (nodes[link.source] = {name: link.source});
+  link.target = nodes[link.target] || (nodes[link.target] = {name: link.target});
+});
+
+var width = 960,
+    height = 500;
+
+var force = d3.layout.force().nodes(d3.values(nodes)).links(links).size([width, height]).linkDistance(60).charge(-300).on("tick", tick).start();
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+var link = svg.selectAll(".link")
+    .data(force.links())
+  .enter().append("line")
+    .attr("class", "link");
+
+var node = svg.selectAll(".node")
+    .data(force.nodes())
+  .enter().append("g")
+    .attr("class", "node")
+    .on("mouseover", mouseover)
+    .on("mouseout", mouseout)
+    .call(force.drag);
+
+node.append("circle")
+    .attr("r", 8);
+
+node.append("text")
+    .attr("x", 12)
+    .attr("dy", ".35em")
+    .text(function(d) { return d.name; });
+
+function tick() {
+  link
+      .attr("x1", function(d) { return d.source.x; })
+      .attr("y1", function(d) { return d.source.y; })
+      .attr("x2", function(d) { return d.target.x; })
+      .attr("y2", function(d) { return d.target.y; });
+
+  node
+      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+}
+
+function mouseover() {
+  d3.select(this).select("circle").transition()
+      .duration(750)
+      .attr("r", 16);
+}
+
+function mouseout() {
+  d3.select(this).select("circle").transition()
+      .duration(750)
+      .attr("r", 8);
+}
+
+</script>
