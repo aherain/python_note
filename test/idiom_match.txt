@@ -1,0 +1,44 @@
+Êó {'Áú': 10, 'ºï': 8, 'Å£': 6} {'Ñò': 10, 'Âí': 8, 'ÍÃ': 6, '¼¦': 4}
+Å£ {'Êó': 10, 'Éß': 8, '¼¦': 6} {'Áú': 10, 'Âí': 8, 'Ñò': 6, '¹·': 4, 'ÍÃ': 2}
+»¢ {'Âí': 10, '¹·': 8} {'Éß': 10, 'ºï': 8}
+ÍÃ {'Ñò': 10, '¹·': 8, 'Öí': 6} {'Êó': 10, 'Å£': 8, 'Áú': 6, '¼¦': 4, 'Âí': 2}
+Áú {'Êó': 10, 'ºï': 8, '¼¦': 6} {'¹·': 10, 'Å£': 8, 'Áú': 6, 'ÍÃ': 4}
+Éß {'Å£': 10, '¼¦': 8} {'»¢': 10, 'ºï': 8, 'Öí': 6}
+Âí {'»¢': 10, 'Ñò': 8, '¹·': 6} {'Êó': 10, 'Å£': 8, 'ÍÃ': 6, 'Âí': 4}
+Ñò {'ÍÃ': 10, 'Âí': 8, 'Öí': 6} {'Êó': 10, 'Å£': 8, '¹·': 6}
+ºï {'Êó': 10, 'Áú': 8} {'»¢': 10, 'Éß': 8, 'Öí': 6}
+¼¦ {'Å£': 10, 'Áú': 8, 'Éß': 6} {'ÍÃ': 10, '¼¦': 8, '¹·': 6}
+¹· {'»¢': 10, 'ÍÃ': 8, 'Âí': 6} {'Å£': 10, 'Áú': 8, 'Ñò': 6, '¼¦': 4}
+Öí {'Ñò': 10, 'ÍÃ': 8} {'Éß': 10, 'Öí': 8, 'ºï': 6}
+{source: 'Êó', target: 'Áú', type: 'licensing'},
+{source: 'Êó', target: 'ºï', type: 'licensing'},
+{source: 'Êó', target: 'Å£', type: 'licensing'},
+{source: 'Å£', target: 'Êó', type: 'licensing'},
+{source: 'Å£', target: 'Éß', type: 'licensing'},
+{source: 'Å£', target: '¼¦', type: 'licensing'},
+{source: '»¢', target: 'Âí', type: 'licensing'},
+{source: '»¢', target: '¹·', type: 'licensing'},
+{source: 'ÍÃ', target: 'Ñò', type: 'licensing'},
+{source: 'ÍÃ', target: '¹·', type: 'licensing'},
+{source: 'ÍÃ', target: 'Öí', type: 'licensing'},
+{source: 'Áú', target: 'Êó', type: 'licensing'},
+{source: 'Áú', target: 'ºï', type: 'licensing'},
+{source: 'Áú', target: '¼¦', type: 'licensing'},
+{source: 'Éß', target: 'Å£', type: 'licensing'},
+{source: 'Éß', target: '¼¦', type: 'licensing'},
+{source: 'Âí', target: '»¢', type: 'licensing'},
+{source: 'Âí', target: 'Ñò', type: 'licensing'},
+{source: 'Âí', target: '¹·', type: 'licensing'},
+{source: 'Ñò', target: 'ÍÃ', type: 'licensing'},
+{source: 'Ñò', target: 'Âí', type: 'licensing'},
+{source: 'Ñò', target: 'Öí', type: 'licensing'},
+{source: 'ºï', target: 'Êó', type: 'licensing'},
+{source: 'ºï', target: 'Áú', type: 'licensing'},
+{source: '¼¦', target: 'Å£', type: 'licensing'},
+{source: '¼¦', target: 'Áú', type: 'licensing'},
+{source: '¼¦', target: 'Éß', type: 'licensing'},
+{source: '¹·', target: '»¢', type: 'licensing'},
+{source: '¹·', target: 'ÍÃ', type: 'licensing'},
+{source: '¹·', target: 'Âí', type: 'licensing'},
+{source: 'Öí', target: 'Ñò', type: 'licensing'},
+{source: 'Öí', target: 'ÍÃ', type: 'licensing'},
